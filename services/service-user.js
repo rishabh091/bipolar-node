@@ -6,6 +6,20 @@ const save = (user) => {
     return User.create(user)
 }
 
+const findByRoom = (room) => {
+    let condition = {
+        apartmentNo: room
+    }
+
+    return User.findOne(condition)
+}
+
+const findById = (id) => {
+    return User.findById(id)
+}
+
 module.exports = {
-    save: save
+    save: save,
+    findByRoom: findByRoom,
+    findById: findById
 }

@@ -19,7 +19,9 @@ mongoose.connect(url, {
 
 //getting routes to integrate in express main app
 const signup = require('./routes/signup')
+const login = require('./routes/login')
 app.use(signup)
+app.use(login)
 
 
 //starting server
