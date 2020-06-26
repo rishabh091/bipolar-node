@@ -9,16 +9,23 @@ const service_booking = require('../services/service-book')
 
 router.post('/book', json, (req, res) => {
     //save data
-    const result = service_booking.book(req.body)
-    console.log(result)
+    service_booking.book(req.body)
+    .then((result) => {
+        console.log(result)
 
-    if (result) {
-        res.status(200)
-        res.send(true)
-    } else {
-        res.status(200)
-        res.send(false)
-    }
+        if (result) {
+            res.status(200)
+            res.send(true)
+        } else {
+            res.status(401)
+            res.send(false)
+        }})
+        .catch((err) => {
+            console.log(err)
+
+            res.status(401)
+            res.send(false)
+        })
 })
 
 module.exports = router
