@@ -15,7 +15,7 @@ router.post('/book', json, (req, res) => {
         res.status(200)
         res.send(true)
     } else {
-        res.status(400)
+        res.status(200)
         res.send(false)
     }
 })
