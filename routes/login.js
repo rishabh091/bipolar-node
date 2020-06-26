@@ -11,7 +11,7 @@ const passport = require('passport')
 //setting up login cors
 const corsConfig = {
     origin: (origin, callback) => {
-        let list = ['https://bipolar-test.web.app', 'http://localhost:4200']
+        let list = ['https://bipolar-test.web.app/', 'http://localhost:4200/', 'https://bipolar-test.web.app/book/']
 
         if(list.indexOf(origin) !== -1) {
             callback(null, true)
