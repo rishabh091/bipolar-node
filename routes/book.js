@@ -10,6 +10,7 @@ const service_booking = require('../services/service-book')
 router.post('/book', json, (req, res) => {
     //save data
     const result = service_booking.book(req.body)
+    console.log(result)
 
     if (result) {
         res.status(200)

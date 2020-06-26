@@ -14,8 +14,8 @@ const book = async (book) => {
         ]
     })
 
+    console.log(value)
     if(value.length == 0) {
-        await console.table(value)
         await Booking.create(book)
 
         return true
