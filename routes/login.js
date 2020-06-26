@@ -9,7 +9,19 @@ dotenv.config()
 const passport = require('passport')
 
 //setting up login cors
-router.use(cors('http://localhost:4200/login'))
+const corsConfig = {
+    origin: (origin, callback) => {
+        let list = ['https://bipolar-test.web.app', 'http://localhost:4200']
+
+        if(list.indexOf(origin) !== -1) {
+            callback(null, true)
+        }
+        else {
+            callback(new Error('Not allowed By cors'))
+        }
+    }
+}
+router.use(cors(corsConfig))
 
 //logout route
 router.delete('/logout', (req, res) => {

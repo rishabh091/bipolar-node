@@ -5,7 +5,19 @@ const cors = require('cors')
 
 const userService = require('../services/service-user')
 
-router.use(cors('http://localhost:4200/signup'))
+const corsConfig = {
+    origin: (origin, callback) => {
+        let list = ['https://bipolar-test.web.app/signup', 'http://localhost:4200/signup']
+
+        if(list.indexOf(origin) !== -1) {
+            callback(null, true)
+        }
+        else {
+            callback(new Error('Not allowed By cors'))
+        }
+    }
+}
+router.use(cors(corsConfig))
 
 router.post('/signup', json, (req, res) => {
     const data = req.body
